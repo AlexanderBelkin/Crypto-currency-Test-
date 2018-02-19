@@ -6,7 +6,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.air.cryptocurrency.R
-import com.example.air.cryptocurrency.model.AllCurrencyResponse
+import com.example.air.cryptocurrency.model.currency_list.AllCurrencyResponse
+import com.pixplicity.easyprefs.library.Prefs
 import java.text.DecimalFormat
 
 class CurrencyAdapter(var callback: CurrencyHolder.RangCallback) : RecyclerView.Adapter<CurrencyHolder>() {
@@ -28,8 +29,15 @@ class CurrencyAdapter(var callback: CurrencyHolder.RangCallback) : RecyclerView.
         holder?.data_currency?.text = data[position].rank +
                 ". " +
                 data[position].symbol
-        holder?.data_price?.text = (data[position].priceUsd?.toDouble()?.format(2)) + " USD"
-        if(data[position].percentChange24h!!.contains("-")) {
+        if(Prefs.getString("currency", "USD") == "USD") {
+            holder?.data_price?.text = (data[position].priceUsd?.toDouble()?.format(2)) + " USD"
+        } else if(Prefs.getString("currency", "USD") == "EUR"){
+            holder?.data_price?.text = (data[position].priceEur?.toDouble()?.format(2)) + " EUR"
+        } else if(Prefs.getString("currency", "USD") == "CNY"){
+            holder?.data_price?.text = (data[position].priceCny?.toDouble()?.format(2)) + " CNY"
+        }
+
+        if (data[position].percentChange24h!!.contains("-")) {
             holder?.data_percent?.setTextColor(Color.RED)
             holder?.data_percent?.text = data[position].percentChange24h + "%"
         } else {

@@ -1,4 +1,4 @@
-package com.example.air.cryptocurrency.model
+package com.example.air.cryptocurrency.model.currency_list
 
 class ArrayCurrency {
 

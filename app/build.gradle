@@ -44,6 +44,7 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraint"
 
     implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlin_version"
 
     //Support
@@ -82,6 +83,7 @@ dependencies {
     compile "com.jakewharton.timber:timber:$rootProject.timber"
 
     compile "uk.co.chrisjenx:calligraphy:$rootProject.calligraphy"
+    compile 'com.pixplicity.easyprefs:library:1.9.0'
 
     testImplementation "junit:junit:$rootProject.junit"
     androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espresso", {

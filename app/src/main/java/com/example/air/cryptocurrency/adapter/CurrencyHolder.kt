@@ -3,11 +3,9 @@ package com.example.air.cryptocurrency.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.view.TextureView
 import android.view.View
 import android.widget.TextView
 import com.example.air.cryptocurrency.R
-import org.w3c.dom.Text
 
 class CurrencyHolder internal constructor(itemView: View, callback: RangCallback) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
@@ -28,12 +26,12 @@ class CurrencyHolder internal constructor(itemView: View, callback: RangCallback
 
     @SuppressLint("LogNotTimber")
     override fun onClick(v: View?) {
-        callback.getRang(position)
+        callback.getPosition(position)
     }
 
     interface RangCallback{
 
-        fun getRang(position: Int)
+        fun getPosition(position: Int)
 
     }
 

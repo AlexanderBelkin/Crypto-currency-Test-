@@ -4,6 +4,6 @@ import com.example.air.cryptocurrency.ui.base.IBasePresenter
 
 interface IMainActivityPresenter<in V: IMainActivityView>: IBasePresenter<V> {
 
-    fun getCurrencyList()
+    fun getCurrencyList(currency:String)
 
 }

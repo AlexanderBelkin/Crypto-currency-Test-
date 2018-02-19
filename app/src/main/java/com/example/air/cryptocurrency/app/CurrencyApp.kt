@@ -1,10 +1,12 @@
 package com.example.air.cryptocurrency.app
 
 import android.app.Application
+import android.content.ContextWrapper
 import com.androidnetworking.AndroidNetworking
 import com.example.air.cryptocurrency.di.component.ApplicationComponent
 import com.example.air.cryptocurrency.di.component.DaggerApplicationComponent
 import com.example.air.cryptocurrency.di.modul.AppModule
+import com.pixplicity.easyprefs.library.Prefs
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 import javax.inject.Inject
 
@@ -24,6 +26,12 @@ class CurrencyApp : Application() {
 
         AndroidNetworking.initialize(applicationContext)
         CalligraphyConfig.initDefault(calligraphyConfig)
+        Prefs.Builder()
+                .setContext(this)
+                .setMode(ContextWrapper.MODE_PRIVATE)
+                .setPrefsName(packageName)
+                .setUseDefaultSharedPreference(true)
+                .build()
     }
 
     fun getComponent() : ApplicationComponent {

@@ -1,8 +1,8 @@
-package com.example.air.cryptocurrency.model
+package com.example.air.cryptocurrency.model.selected_currency
 
 import com.google.gson.annotations.SerializedName
 
-data class AllCurrencyResponse(
+data class SelectedCurrencyResponse(
 
 	@field:SerializedName("price_usd")
 	val priceUsd: String? = null,
@@ -47,5 +47,23 @@ data class AllCurrencyResponse(
 	val id: String? = null,
 
 	@field:SerializedName("percent_change_7d")
-	val percentChange7d: String? = null
+	val percentChange7d: String? = null,
+
+	@field:SerializedName("price_eur")
+	val priceEur: String? = null,
+
+	@field:SerializedName("24h_volume_eur")
+	val jsonMember24hVolumeEur: String? = null,
+
+	@field:SerializedName("market_cap_eur")
+	val marketCapEur: String? = null,
+
+	@field:SerializedName("price_cny")
+	val priceCny: String? = null,
+
+	@field:SerializedName("24h_volume_cny")
+	val jsonMember24hVolumeCny: String? = null,
+
+	@field:SerializedName("market_cap_cny")
+	val marketCapCny: String? = null
 )

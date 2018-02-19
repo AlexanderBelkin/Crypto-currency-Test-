@@ -2,6 +2,9 @@ package com.example.air.cryptocurrency.di.modul
 
 import android.support.v7.app.AppCompatActivity
 import com.example.air.cryptocurrency.di.ActivityScope
+import com.example.air.cryptocurrency.ui.detail_activity.DetailActivityPresenter
+import com.example.air.cryptocurrency.ui.detail_activity.IDetailActivityPresenter
+import com.example.air.cryptocurrency.ui.detail_activity.IDetailActivityView
 import com.example.air.cryptocurrency.ui.main_activity.IMainActivityPresenter
 import com.example.air.cryptocurrency.ui.main_activity.IMainActivityView
 import com.example.air.cryptocurrency.ui.main_activity.MainActivityPresenter
@@ -36,6 +39,12 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
     @Provides
     @ActivityScope
     fun provideMainPresenter(presenter: MainActivityPresenter<IMainActivityView>): IMainActivityPresenter<IMainActivityView> {
+        return presenter
+    }
+
+    @Provides
+    @ActivityScope
+    fun provideDetailPresenter(presenter: DetailActivityPresenter<IDetailActivityView>): IDetailActivityPresenter<IDetailActivityView> {
         return presenter
     }
 
