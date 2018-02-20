@@ -10,9 +10,9 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainActivityPresenter <V : IMainActivityView> @Inject
-constructor(schedulerProvider: ISchedulerProvider,
-            compositeDisposable: CompositeDisposable,
-            dataManager: IDataManager) : BasePresenter<V>(schedulerProvider , compositeDisposable , dataManager) , IMainActivityPresenter<V> {
+constructor(schedulerProvider: ISchedulerProvider?,
+            compositeDisposable: CompositeDisposable?,
+            dataManager: IDataManager?) : BasePresenter<V>(schedulerProvider!! , compositeDisposable!! , dataManager!!) , IMainActivityPresenter<V> {
 
     override fun getCurrencyList(currency:String, limit:String) {
         dataManager.getAllCurrency(currency, limit)
@@ -25,4 +25,5 @@ constructor(schedulerProvider: ISchedulerProvider,
                     throwable: Throwable -> mvpView?.onError(throwable.stackTrace.toString())
                 })
     }
+
 }

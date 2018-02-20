@@ -86,7 +86,7 @@ class MainActivity : BaseActivity(), IMainActivityView, SwipeRefreshLayout.OnRef
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                var list: ArrayList<AllCurrencyResponse> = ArrayList()
+                val list: ArrayList<AllCurrencyResponse> = ArrayList()
                 ArrayCurrency.listCurrency.filterTo(list) { it.symbol!!.toLowerCase().contains(newText.toLowerCase()) }
                 currencyAdapter.setData(list)
                 currencyAdapter.notifyDataSetChanged()
@@ -98,9 +98,6 @@ class MainActivity : BaseActivity(), IMainActivityView, SwipeRefreshLayout.OnRef
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         val id = item.getItemId()
 
         return if (id == R.id.action_search) {
