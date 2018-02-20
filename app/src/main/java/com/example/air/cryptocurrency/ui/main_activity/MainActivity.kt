@@ -42,7 +42,7 @@ class MainActivity : BaseActivity(), IMainActivityView, SwipeRefreshLayout.OnRef
 
         getActivityComponents().inject(this)
         presenter.onAttach(this)
-        presenter.getCurrencyList(Prefs.getString("currency", "USD"))
+        presenter.getCurrencyList(Prefs.getString("currency", "USD"), Prefs.getString("limit", "100"))
         swipeRefreshLayout.setOnRefreshListener(this)
         swipeRefreshLayout.isRefreshing = true
         recycler_currency.layoutManager = LinearLayoutManager(this)
@@ -51,7 +51,7 @@ class MainActivity : BaseActivity(), IMainActivityView, SwipeRefreshLayout.OnRef
 
     override fun onRefresh() {
         swipeRefreshLayout.isRefreshing = true
-        presenter.getCurrencyList(Prefs.getString("currency", "USD"))
+        presenter.getCurrencyList(Prefs.getString("currency", "USD"), Prefs.getString("limit", "100"))
     }
 
     override fun Success() {
@@ -65,10 +65,14 @@ class MainActivity : BaseActivity(), IMainActivityView, SwipeRefreshLayout.OnRef
         super.onError(errorString)
     }
 
-    override fun getPosition(position: Int) {
-        DetailActivity.setData(ArrayCurrency.listCurrency[position].id!!)
-        Timber.d("position %s", ArrayCurrency.listCurrency[position].id!!)
-        startActivity(DetailActivity.getStartIntent(this))
+    override fun getPosition(rank: String) {
+        for(item in ArrayCurrency.listCurrency){
+            if(item.rank == rank){
+                DetailActivity.setData(item.id!!)
+                startActivity(DetailActivity.getStartIntent(this))
+                break
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -83,7 +87,7 @@ class MainActivity : BaseActivity(), IMainActivityView, SwipeRefreshLayout.OnRef
 
             override fun onQueryTextChange(newText: String): Boolean {
                 var list: ArrayList<AllCurrencyResponse> = ArrayList()
-                ArrayCurrency.listCurrency.filterTo(list) { it.name!!.toLowerCase().contains(newText.toLowerCase()) }
+                ArrayCurrency.listCurrency.filterTo(list) { it.symbol!!.toLowerCase().contains(newText.toLowerCase()) }
                 currencyAdapter.setData(list)
                 currencyAdapter.notifyDataSetChanged()
                 list.clear()

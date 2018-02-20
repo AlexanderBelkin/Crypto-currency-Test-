@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 
 interface IDataManager {
 
-    fun getAllCurrency(currency:String): Observable<ArrayList<AllCurrencyResponse>>
+    fun getAllCurrency(currency:String, limit:String): Observable<ArrayList<AllCurrencyResponse>>
 
     fun getSelectedCurrency(idCurrency: String, currency:String): Observable<ArrayList<SelectedCurrencyResponse>>
 

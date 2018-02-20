@@ -26,9 +26,8 @@ class CurrencyAdapter(var callback: CurrencyHolder.RangCallback) : RecyclerView.
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CurrencyHolder?, position: Int) {
-        holder?.data_currency?.text = data[position].rank +
-                ". " +
-                data[position].symbol
+        holder?.rank_currency?.text = data[position].rank
+        holder?.data_currency?.text = data[position].symbol
         if(Prefs.getString("currency", "USD") == "USD") {
             holder?.data_price?.text = (data[position].priceUsd?.toDouble()?.format(2)) + " USD"
         } else if(Prefs.getString("currency", "USD") == "EUR"){

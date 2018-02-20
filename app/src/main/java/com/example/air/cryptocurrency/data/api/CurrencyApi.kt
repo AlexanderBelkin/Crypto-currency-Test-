@@ -10,7 +10,8 @@ import retrofit2.http.Query
 interface CurrencyApi {
 
     @GET("ticker")
-    fun getAllCurrencyApi(@Query("convert") currency:String): Observable<ArrayList<AllCurrencyResponse>>
+    fun getAllCurrencyApi(@Query("convert") currency:String,
+                          @Query("limit") limit:String): Observable<ArrayList<AllCurrencyResponse>>
 
     @GET("ticker/{id}")
     fun getSelectedCurrencyApi(@Path("id") id:String,

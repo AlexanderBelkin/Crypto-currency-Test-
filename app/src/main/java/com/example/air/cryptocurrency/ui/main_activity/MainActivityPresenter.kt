@@ -14,8 +14,8 @@ constructor(schedulerProvider: ISchedulerProvider,
             compositeDisposable: CompositeDisposable,
             dataManager: IDataManager) : BasePresenter<V>(schedulerProvider , compositeDisposable , dataManager) , IMainActivityPresenter<V> {
 
-    override fun getCurrencyList(currency:String) {
-        dataManager.getAllCurrency(currency)
+    override fun getCurrencyList(currency:String, limit:String) {
+        dataManager.getAllCurrency(currency, limit)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ listCurrency ->

@@ -6,6 +6,7 @@ import com.androidnetworking.AndroidNetworking
 import com.example.air.cryptocurrency.di.component.ApplicationComponent
 import com.example.air.cryptocurrency.di.component.DaggerApplicationComponent
 import com.example.air.cryptocurrency.di.modul.AppModule
+import com.facebook.stetho.Stetho
 import com.pixplicity.easyprefs.library.Prefs
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 import javax.inject.Inject
@@ -26,6 +27,7 @@ class CurrencyApp : Application() {
 
         AndroidNetworking.initialize(applicationContext)
         CalligraphyConfig.initDefault(calligraphyConfig)
+        Stetho.initializeWithDefaults(this)
         Prefs.Builder()
                 .setContext(this)
                 .setMode(ContextWrapper.MODE_PRIVATE)
